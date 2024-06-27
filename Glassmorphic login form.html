@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+    <section>
+        <div class="leaves">
+            <div class="set">
+                <div><img src="leaf_01.png"></div>
+                <div><img src="leaf_02.png"></div>
+                <div><img src="leaf_03.png"></div>
+                <div><img src="leaf_04.png"></div>
+                <div><img src="leaf_01.png"></div>
+                <div><img src="leaf_02.png"></div>
+                <div><img src="leaf_03.png"></div>
+                <div><img src="leaf_04.png"></div>
+            </div>
+        </div>
+        <img src="bg.jpg" class="bg">
+        <img src="girl.png" class="girl">
+        <img src="trees.png" class="trees">
+        <div class="login">
+            <h2>Sign In</h2>
+            <div class="inputBox">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Login" id="btn" onclick="validate()">
+            </div>
+            <div class="group">
+                <a href="javascript:void(0)">Forget Password</a>
+                <a href="javascript:void(0)">Sign Up</a>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".login"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+        });
+        document.querySelector('.login').addEventListener('mousemove', function (e) {
+            const tiltElement = document.querySelector('.login');
+            const rect = tiltElement.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            tiltElement.vanillaTilt.setTiltAngleY((y - 0.5) * 25);
+            tiltElement.vanillaTilt.setTiltAngleX((x - 0.5) * 25);
+        });
+    </script>
+    <script>
+        let username = document.getElementsByName("username")[0];
+        let password = document.getElementsByName("password")[0];
+        function validate(){
+            if(username.value == "" || password.value == ""){
+                alert("Please fill all fields");
+            }
+            if (username.value == "ananth" && password.value == "0987654321" || username.value == "hariharan" && password.value == "1234567890"
+                || username.value == "postulate" && password.value == "postulate" ) {
+                window.location.href = 'Nav Hover.html';
+            }
+            else {
+                 alert("Invalid Username or Password");
+                 history.back()
+            }
+        }
+    </script>
+</body>
+</html>
